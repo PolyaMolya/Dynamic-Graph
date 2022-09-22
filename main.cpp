@@ -45,6 +45,12 @@ public:
 		this->speed = 0.0;
 		this->turningSpeed = 0.0;
 	}
+	Unit(int a = 0) {
+		this->x = 0.0;
+		this->y = 0.0;
+		this->speed = 0.0;
+		this->turningSpeed = 0.0;
+	}
 	Unit(double x, double y, double speed,double turningS) {
 		this->x = x;
 		this->y = y;
@@ -61,7 +67,22 @@ public:
 	void setTurningSpeed(double turningS) {
 		this->turningSpeed = turningS;
 	}
+	std::pair<double, double> givePosition() {
+		std::pair<double, double> pos;
+		pos.first = this->x;
+		pos.second = this->y;
+		return pos;
+	}
+	double giveSpeed() {
+		return speed;
+	}
+	double giveTurningSpeed() {
+		return turningSpeed;
+	}
 };
+// main unit located in 0[] 
+// other vector elements - field cells next to the main unit [0] 
+// and enemies / friends (may not be nearby)
 class DynamicGraph {
 private:
 	std::vector<std::vector<int>> matrix;
