@@ -1,0 +1,5 @@
+23/09 to do
+class DynamicGraph
+- implement constructors in it
+- forwarding
+- overload operators as needed
