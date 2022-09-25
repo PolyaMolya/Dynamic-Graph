@@ -79,6 +79,11 @@ public:
 	double giveTurningSpeed() {
 		return turningSpeed;
 	}
+	void printUnitDataOnConsol() {
+		std::cout << "Position: " << std::endl << "x = " << this->x << "; y = " << this->y << std::endl;
+		std::cout << "Speed = " << this->speed << std::endl;
+		std::cout << "Turning speed = " << this->turningSpeed << std::endl;
+	}
 };
 // main unit located in 0[] 
 // other vector elements - field cells next to the main unit [0] 
@@ -88,36 +93,37 @@ private:
 	std::vector<std::vector<int>> matrix;
 	int size;
 public:
-	DynamicGraph(int n) {
-		this->size = n;
+		DynamicGraph() {
+		Unit T(0);
+		this->size = 10;
 		for (int i = 0; i < this->size; i++) {
-			matrix.push_back(std::vector<int>());
-			for (int j = 0; j < this->size; j++) {
-				matrix[i].push_back(0);
-				matrix[i][j] = 0;
-			}
+			this->currentUnit.push_back(T);
 		}
 	}
-
-	std::vector<int>& operator [](int i) {  // return one vector from matrix
-		return this->matrix[i];
+	DynamicGraph(int n, Unit U) {
+		Unit T(0); //  cells around	current Unit [0]
+		this->size = n;
+		this->currentUnit.push_back(U);
+		this->currentUnit.resize(this->size);
+		for (int i = 0; i < this->size; i++) {
+			this->currentUnit.push_back(T);
+		}
 	}
 	int returnSize() {
 		return this->size;
 	}
-	void insertVertex() {
+
+	void insertVertex(Unit U) {
 		this->size++;
-		this->matrix.push_back(std::vector<int>());
+		this->currentUnit.push_back(U);
+	}
+	void printGraphAboutCurrentUnit() {
+		std::cout << std::endl;
 		for (int i = 0; i < this->size; i++) {
-			this->matrix[i].resize(this->size, 0);
+			std::cout << "Unit namber " << i << std::endl;
+			this->currentUnit[i].printUnitDataOnConsol();
+			std::cout << "==========" << std::endl;
 		}
 	}
 
-	void printMatrixOnConsol() {
-		for (int i = 0; i < this->size; i++) {
-			for (int j = 0; j < this->size; j++)
-				std::cout << matrix[i][j] << " ";
-			std::cout << std::endl;
-		}
-	}
 };
