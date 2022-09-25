@@ -88,6 +88,7 @@ public:
 // main unit located in 0[] 
 // other vector elements - field cells next to the main unit [0] 
 // and enemies / friends (may not be nearby)
+
 class DynamicGraph {
 private:
 	std::vector<std::vector<int>> matrix;
