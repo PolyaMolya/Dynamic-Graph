@@ -3,3 +3,7 @@ class DynamicGraph
 - implement constructors in it
 - forwarding
 - overload operators as needed
+
+25/09 to do
+- ñome up with a connection between a dynamic graph and a map
+- literature search for the algorithm
